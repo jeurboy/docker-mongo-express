@@ -1,0 +1,10 @@
+#!/bin/sh
+
+sed -i \
+	-e "s/server:\s*'localhost',/server: '$MONGO_SERVER',/" \
+	-e "s/port:\s*27017,/port: $MONGO_PORT,/" \
+	-e "s/username:\s*'admin',/port: $MONGO_EXP_USERNAME,/" \
+	-e "s/password:\s*'pass',/port: $MONGO_EXP_PASSWORD,/" \
+    /node_modules/mongo-express/config.js
+
+exec node node_modules/mongo-express/app.js
